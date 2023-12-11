@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "314903677796",
+    "project_id": "educaburn",
+    "storage_bucket": "educaburn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:314903677796:android:b2890336986a3ccf3f0871",
+        "android_client_info": {
+          "package_name": "com.educaburn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1VN4EAY_GRyrGxPgSlnwjsx7oHzDXZkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
