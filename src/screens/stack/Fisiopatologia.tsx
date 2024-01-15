@@ -3,6 +3,7 @@ import { TouchableCard } from "../../components/TouchableCard";
 import { useCallback, useMemo, useRef, useState } from "react";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 import { ScrollView, StyleSheet, Text, View } from "react-native";
+import { VStack } from "native-base";
 
 export function Fisiopatologia() {
   const [text, setText] = useState("");
@@ -15,25 +16,14 @@ export function Fisiopatologia() {
   }, []);
 
   return (
-      
+    <>  
       <ScrollView  style={{
         backgroundColor: "white",
-        flex:1,
-        height: "100%",
-      }} >
-      <View 
-        style={{
-          flex:1,
-          backgroundColor: "white",
-          alignItems: "center",
-          justifyContent: "center",
-         
-          paddingBottom: "20%",
-
-
-          
-        }}
+      }}
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
       >
+      <VStack  bg="white" alignItems={"center"} mb={10} >
         <Header title="Fisiopatologia da queimadura" />
        
        
@@ -100,9 +90,9 @@ export function Fisiopatologia() {
             handleSnapPress(0);
           }} 
         />
-       
-      
-      
+     
+      </VStack>   
+      </ScrollView>
       <BottomSheet
         ref={sheetRef}
         index={-1}
@@ -112,13 +102,11 @@ export function Fisiopatologia() {
       
       >
         <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
-         <Text style={styles.contentText}>{text}</Text>
+        <Text style={styles.contentText}>{text}</Text>
         </BottomSheetScrollView>
         
       </BottomSheet>
-      </View>
-      
-      </ScrollView>
+    </>
     
   );
 
@@ -131,7 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 16,
     paddingTop: 16,
-    paddingBottom: 300,
+    paddingBottom: 16,
   },
   bottomSheet: {
     backgroundColor: 'white',
@@ -142,7 +130,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#D1D1D1",
     borderRadius: 16,
-
   },
   contentText: {
     fontSize: 16,

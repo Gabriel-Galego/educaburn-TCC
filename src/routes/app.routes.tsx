@@ -100,7 +100,6 @@ export function AppRoutes() {
           height: 60,
           paddingBottom: 10,
           paddingTop: 10,
-          position: "absolute",
           ...tabBarColors,
           backgroundColor: "#E6E6E6",
         },
@@ -109,9 +108,9 @@ export function AppRoutes() {
         tabBarLabelStyle: {
           fontFamily: "Roboto_700Bold",
           fontSize: 12,
-          
-      
-        }
+        },
+        
+        
       }}
     >
       <BottomTab.Screen

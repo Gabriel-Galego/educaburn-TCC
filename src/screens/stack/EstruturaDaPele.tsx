@@ -5,7 +5,7 @@ import { useState, useCallback, useMemo, useRef } from "react";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
 
 import Stack from "phosphor-react-native/src/bold/Stack";
-import {  StyleSheet, Text } from "react-native";
+import {  ScrollView, StyleSheet, Text } from "react-native";
 
 export function EstruturaDaPele() {
   const [text, setText] = useState("");
@@ -20,7 +20,14 @@ export function EstruturaDaPele() {
   }, []);
 
   return (
-      <VStack flex={1} pb={6} bg="white" alignItems={"center"} >
+    <>
+    <ScrollView  style={{
+      backgroundColor: "white",
+    }}
+    showsVerticalScrollIndicator={false}
+    keyboardShouldPersistTaps="handled"
+    >
+      <VStack  bg="white" alignItems={"center"} mb={10}>
         <Header title="Estrutura da pele" />
         <Image
           source={require("../../assets/estruturadapele.png")}
@@ -65,21 +72,22 @@ export function EstruturaDaPele() {
             handleSnapPress(0);
           }}
         />
-      
-      
-      <BottomSheet
-        ref={sheetRef}
-        index={-1}
-        snapPoints={snapPoints}     
-        enablePanDownToClose={true}
-        style={styles.bottomSheet}
-      
-      >    
-        <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
-         <Text style={styles.contentText}>{text}</Text>
-        </BottomSheetScrollView>
-      </BottomSheet>
+
       </VStack>
+      
+    </ScrollView>  
+    <BottomSheet
+    ref={sheetRef}
+    index={-1}
+    snapPoints={snapPoints}     
+    enablePanDownToClose={true}
+    style={styles.bottomSheet}   
+  >    
+    <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
+      <Text style={styles.contentText}>{text}</Text>
+    </BottomSheetScrollView>
+  </BottomSheet>
+  </>
   );
 }
 
@@ -89,7 +97,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 16,
     paddingTop: 16,
-    paddingBottom: 150,
+    paddingBottom: 16,
   },
   bottomSheet: {
     backgroundColor: 'white',
@@ -100,7 +108,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#D1D1D1",
     borderRadius: 16,
-
   },
   contentText: {
     fontSize: 16,
@@ -108,8 +115,6 @@ const styles = StyleSheet.create({
     textAlign: 'left',
     fontFamily: "Roboto_400Regular",
     color: 'black',
-
   },
-
 
 });

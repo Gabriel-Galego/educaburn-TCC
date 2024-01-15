@@ -21,8 +21,7 @@ export function Profundidade() {
   }, []);
 
   return (
-
-      <VStack flex={1} pb={6} bg="white" alignItems={"center"}>
+      <VStack flex={1} bg="white" alignItems={"center"} >
         <Header title="Profundidade da Queimadura" />
         <TouchableCard
           title="Queimadura de Primeiro Grau"
@@ -117,6 +116,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     padding: 16,  
     margin: 16,
+    paddingBottom: 16,
   },
   bottomSheet: {
     backgroundColor: 'white',

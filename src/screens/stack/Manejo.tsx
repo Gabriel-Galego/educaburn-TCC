@@ -16,12 +16,7 @@ export function Manejo() {
   const [showModal3, setShowModal3] = useState(false);
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      keyboardShouldPersistTaps="handled"
-      backgroundColor={"white"}
-    >
-      <VStack flex={1} pb={6} bg={"white"} alignItems={"center"} mb={20}>
+      <VStack flex={1} bg={"white"} alignItems={"center"} >
         <Header title="Manejo Inicial da queimadura" />
 
         <TouchableCard
@@ -52,6 +47,5 @@ export function Manejo() {
           iconRight="direita"
         />
       </VStack>
-    </ScrollView>
   );
 }

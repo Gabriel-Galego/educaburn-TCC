@@ -1,11 +1,17 @@
 import { VStack } from "native-base";
 import { Card } from "../../components/Card";
 import { Header } from "../../components/Header";
+import { ScrollView } from "react-native";
 
 export function Criterios() {
   return (
-
-      <VStack flex={1} pb={6} bg="white" alignItems={"center"} >
+    <ScrollView  style={{
+      backgroundColor: "white",
+    }}
+    showsVerticalScrollIndicator={false}
+    keyboardShouldPersistTaps="handled"
+    >
+      <VStack flex={1} bg="white" alignItems={"center"} mb={10} >
         <Header
           title="Critérios para internação ou transferência"
           width="90%"
@@ -26,5 +32,6 @@ export function Criterios() {
           text12="• Maus tratos;"
         />
       </VStack>
+    </ScrollView>  
   );
 }

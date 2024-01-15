@@ -1,11 +1,10 @@
-import { Heading, Image, Text, useTheme } from "native-base";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import Flame from "phosphor-react-native/src/icons/Flame";
+import { Text, useTheme } from "native-base";
+import Fire from "phosphor-react-native/src/icons/Fire";
 export function Logo() {
   const { colors }: any = useTheme();
   return (
     <>
-      <Flame size={118} color={colors.orange[400]} />
+      <Fire size={118} color={colors.orange[400]} />
       <Text
         fontSize={48}
         fontFamily={"logo"}

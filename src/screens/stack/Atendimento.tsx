@@ -1,4 +1,4 @@
-import { Modal, Text, VStack, useTheme } from "native-base";
+import { Text, VStack, useTheme } from "native-base";
 import { TouchableCard } from "../../components/TouchableCard";
 import { Card } from "../../components/Card";
 
@@ -6,7 +6,7 @@ import { Header } from "../../components/Header";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import { useState, useCallback, useMemo, useRef } from "react";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
-import { StyleSheet } from "react-native";
+import { ScrollView, StyleSheet } from "react-native";
 
 export function Atendimento() {
   const { colors }: any = useTheme();
@@ -28,8 +28,14 @@ export function Atendimento() {
   }, []);
 
   return (
-
-      <VStack flex={1} pb={6} bg="white" alignItems={"center"} >
+    <>  
+      <ScrollView  style={{
+        backgroundColor: "white",
+      }}
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
+      >
+      <VStack bg="white" alignItems={"center"} mb={10} >
         <Header title="Atendimento pré-hospitalar" />
 
         <Card text="O paciente queimado deve ser considerado um politraumatizado até que se prove o contrário- em acidentes graves pode haver lesões internas associadas a maior gravidade. Dessa forma também se utiliza do método de avaliação ABCDE." />
@@ -144,33 +150,36 @@ export function Atendimento() {
             />
           }
         />
-        <BottomSheet
-        ref={sheetRef}
-        index={-1}
-        snapPoints={snapPoints}     
-        enablePanDownToClose={true}
-        style={styles.bottomSheet}
-      
-      >    
-        <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
-         {text && <Text style={styles.contentText}>{text}</Text>}
-         {text2 && <Text></Text>}
-         {text2 && <Text style={styles.contentText}>{text2}</Text>}
-         {text3 && <Text></Text>}
-         {text3 && <Text style={styles.contentText}>{text3}</Text>}
-         {text4 && <Text></Text>}
-         {text4 && <Text style={styles.contentText}>{text4}</Text>}
-         {text5 && <Text></Text>}
-         {text5 && <Text style={styles.contentText}>{text5}</Text>}
-         {text6 && <Text></Text>}
-         {text6 && <Text style={styles.contentText}>{text6}</Text>}
-         {text7 && <Text></Text>}
-         {text7 && <Text style={styles.contentText}>{text7}</Text>}
-         {text8 && <Text></Text>}
-         {text8 && <Text style={styles.contentText}>{text8}</Text>}
-        </BottomSheetScrollView>
-      </BottomSheet>
+        
       </VStack>
+    </ScrollView>
+    <BottomSheet
+      ref={sheetRef}
+      index={-1}
+      snapPoints={snapPoints}     
+      enablePanDownToClose={true}
+      style={styles.bottomSheet}
+    
+    >    
+      <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
+        {text && <Text style={styles.contentText}>{text}</Text>}
+        {text2 && <Text></Text>}
+        {text2 && <Text style={styles.contentText}>{text2}</Text>}
+        {text3 && <Text></Text>}
+        {text3 && <Text style={styles.contentText}>{text3}</Text>}
+        {text4 && <Text></Text>}
+        {text4 && <Text style={styles.contentText}>{text4}</Text>}
+        {text5 && <Text></Text>}
+        {text5 && <Text style={styles.contentText}>{text5}</Text>}
+        {text6 && <Text></Text>}
+        {text6 && <Text style={styles.contentText}>{text6}</Text>}
+        {text7 && <Text></Text>}
+        {text7 && <Text style={styles.contentText}>{text7}</Text>}
+        {text8 && <Text></Text>}
+        {text8 && <Text style={styles.contentText}>{text8}</Text>}
+      </BottomSheetScrollView>
+    </BottomSheet>
+  </>  
   );
 }
 
@@ -180,10 +189,9 @@ const styles = StyleSheet.create({
   contentContainer: {
   
     backgroundColor: 'white',
-    paddingBottom: 150,
+    paddingBottom: 16,
     paddingHorizontal: 16,
     paddingTop: 16,
-
   },
   bottomSheet: {
     backgroundColor: 'white',
@@ -194,7 +202,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: "#D1D1D1",
     borderRadius: 16,
-
   },
   contentText: {
     fontSize: 16,

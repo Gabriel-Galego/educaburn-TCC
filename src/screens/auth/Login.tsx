@@ -90,7 +90,6 @@ export function Login() {
         }
       })
       .finally(() => {
-        console.log("Login finalizado");
         setIsLoading(false);
         
       });

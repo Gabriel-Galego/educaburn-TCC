@@ -19,7 +19,14 @@ export function Calculo() {
   }, []);
 
   return (
-      <VStack flex={1} pb={6} bg="white" alignItems={"center"}>
+    <>  
+      <ScrollView  style={{
+        backgroundColor: "white",
+      }}
+      showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
+      >
+      <VStack bg="white" alignItems={"center"} mb={10}>
         <Header title="Cálculo da Superfície Corporal Queimada" />
         <TouchableCard
           title="Entenda o cálculo"
@@ -39,21 +46,24 @@ export function Calculo() {
           width="100%"
           height={500}
         />
-        <BottomSheet
-          ref={sheetRef}
-          index={-1}
-          snapPoints={snapPoints}     
-          enablePanDownToClose={true}
-          style={styles.bottomSheet}
-      
-        >    
-          <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
-          <Text style={styles.contentText}>{text}</Text>
-          <Text></Text>
-          <Text style={styles.contentText}>{text2}</Text>
-          </BottomSheetScrollView>
-        </BottomSheet>
+        
       </VStack>
+    </ScrollView>  
+    <BottomSheet
+      ref={sheetRef}
+      index={-1}
+      snapPoints={snapPoints}     
+      enablePanDownToClose={true}
+      style={styles.bottomSheet}
+  
+    >    
+      <BottomSheetScrollView contentContainerStyle={styles.contentContainer}>
+      <Text style={styles.contentText}>{text}</Text>
+      <Text></Text>
+      <Text style={styles.contentText}>{text2}</Text>
+      </BottomSheetScrollView>
+    </BottomSheet>
+  </>
   );
 }
 
@@ -64,7 +74,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: 'white', 
     margin: 16,
-    paddingBottom: 150,
+    paddingBottom: 16,
   },
   bottomSheet: {
     backgroundColor: 'white',

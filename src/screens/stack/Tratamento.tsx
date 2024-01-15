@@ -21,7 +21,7 @@ export function Tratamento() {
 
   return (
 
-      <VStack flex={1} pb={6} bg="white" alignItems={"center"}>
+      <VStack flex={1} bg="white" alignItems={"center"}>
         <Header title="Tratamento medicamentoso" />
         <TouchableCard
           title="Analgesia para adultos"
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 16,
     paddingTop: 16,
-    paddingBottom: 150,
+    paddingBottom: 16,
   },
   bottomSheet: {
     backgroundColor: 'white',

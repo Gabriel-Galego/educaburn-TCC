@@ -34,7 +34,7 @@ export function ManejoFerida() {
 
   return (
 
-      <VStack flex={1} pb={6} bg={"white"} alignItems={"center"} >
+      <VStack flex={1} bg={"white"} alignItems={"center"} >
         <Header title="Manejo Inicial da ferida" />
 
         <TouchableCard
@@ -119,55 +119,6 @@ export function ManejoFerida() {
             />
           }
         />
-        <Modal
-          isOpen={showModal}
-          onClose={() => setShowModal(false)}
-          size="lg"
-          backdropVisible={true}
-          color={colors.GRAY_LIGHT}
-        >
-          <Card
-            isScrollable
-            text="Curativo aberto: é caracterizado por uma cobertura primária colocada diretamente na lesão, ou apenas aplicação de agente tópico."
-            text2="- É mais utilizado em queimaduras de 1º grau."
-            text3="- Vantagens: permite visualização da área queimada, baixo custo e facilidade de aplicação, afeta pouco a mobilidade articular."
-            text4="- Desvantagem: risco de hipotermia, principalmente em grandes queimados, o que requer maior cuidado com a temperatura do ambiente."
-            text5="Curativo oclusivo: são caracterizados por uma cobertura primária, que fica em contato direto com o leito da ferida, seguido por uma segunda cobertura."
-            text6="- A indicação do curativo é baseada na profundidade da lesão, quantidade de exsudato, localização, agente causador, impacto funcional na mobilidade, custo, conforto e dor do paciente."
-            text7="- Vantagens: diminuição da perda de fluído e perda de calor para o meio externo, ajuda no desbridamento, absorção de exsudato."
-            text8="- Desvantagem: redução da mobilidade articular – em dedos e pés deve-se manter os dedos separados por gazes, limita o acesso a ferida permitindo avaliar a ferida apenas no momento de troca de curativo."
-            text9="Películas de proteção: devem ser colocados após o controle bacteriano e remoção do tecido necrótico. O propósito é criar um microclima que estimula a epitelização e não é retirada até que a lesão esteja totalmente epitelizada."
-          />
-        </Modal>
-        <Modal
-          isOpen={showModal2}
-          onClose={() => setShowModal2(false)}
-          size="lg"
-          backdropVisible={true}
-          color={colors.GRAY_LIGHT}
-        >
-          <Card
-            isScrollable
-            text="Tem como objetivo controlar o crescimento bacteriano, remover o tecido desvitalizado e estimular o crescimento de queratinócitos ou auxiliar o preparo de lesões de espessura profunda para o autoenxerto."
-            text2="• Sulfadiazina de prata 1%: Eficaz no controle de infecção local, possui ação contra bactérias gram-negativas, gram-positivas e fungo Candida Albicans. Pode ser encontrada de forma isolada ou associada a lidocaína e vitamina A, auxiliando no alívio da dor e na epitelização. Pode ser aplicada e mantida em curativo aberto ou oclusivo com troca a cada 24h ou quando necessário a depender do grau de exsudação. Deve ser usada apenas nos primeiros dias de tratamento, enquanto ainda tiver tecido necrótico ou infecção. O uso prolongado é prejudicial a cicatrização."
-            text3="• Colagenase: Proteinase indicada para o desbridamento do tecido necrótico de queimaduras profundas, atua sem afetar o tecido de granulação. Deve ser aplicada na área lesionada e coberta com gaze úmida com água destilada ou soro fisiológico 0,9% para ativar a enzima. O curativo deve ser ocluído e trocado a cada 24h, não deve ser associado a metais pesados como mercúrio e prata, pois inativa a enzima."
-            text4="• Ácidos graxos essenciais (AGE) ou óleo vegetal: São utilizados em um estágio avançado de restauração da lesão, visando estimular a epitelização, ou em casos de queimadura de 1º grau para hidratar a área queimada."
-          />
-        </Modal>
-        <Modal
-          isOpen={showModal3}
-          onClose={() => setShowModal3(false)}
-          size="lg"
-          backdropVisible={true}
-          color={colors.GRAY_LIGHT}
-        >
-          <Card
-            isScrollable
-            text="• Sulfadiazina de prata 1% nas primeiras 48-72h para evitar infecção - tópico desbridante para remoção de tecido necrosado (quando necessário) – tópico estimulante de cicatrização."
-            text2="• Em casos de queimaduras com flictenas (bolhas) manter intactas as <6mm sem tensão, realizar desbridamento das >6mm com material estéril e aplicar antimicrobiano tópico. Manter curativo ocluído para evitar contaminação."
-            text3="* Os profissionais de saúde podem lançar mão de outras coberturas para o curativo desde que sejam recomendados para o tipo de lesão."
-          />
-        </Modal>
         <BottomSheet
         ref={sheetRef}
         index={-1}
@@ -207,7 +158,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 16,
     paddingTop: 16,
-    paddingBottom: 150,
+    paddingBottom: 16,
   },
   bottomSheet: {
     backgroundColor: 'white',

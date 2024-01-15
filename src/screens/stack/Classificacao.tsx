@@ -12,12 +12,8 @@ export function Classificacao() {
  
 
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      keyboardShouldPersistTaps="handled"
-      backgroundColor={"white"}
-    >
-      <VStack flex={1} pb={6} bg={"white"} alignItems={"center"} mb={20}>
+
+      <VStack flex={1} bg={"white"} alignItems={"center"}>
         <Header title="Classificação das queimaduras" />
 
         <TouchableCard
@@ -50,8 +46,5 @@ export function Classificacao() {
           iconRight="direita"
         />
       </VStack>
-      
-     
-    </ScrollView>
   );
 }

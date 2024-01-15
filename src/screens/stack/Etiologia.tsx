@@ -3,7 +3,7 @@ import { Header } from "../../components/Header";
 import { TouchableCard } from "../../components/TouchableCard";
 import { useState, useCallback, useMemo, useRef } from "react";
 import BottomSheet, { BottomSheetScrollView } from "@gorhom/bottom-sheet";
-import { StyleSheet, Text, View } from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 export function Etiologia() {
   const [text, setText] = useState("");
@@ -18,11 +18,8 @@ export function Etiologia() {
 
 
   return (
-      
-      <VStack flex={1} pb={6} bg="white" alignItems={"center"} >
+      <VStack flex={1} bg="white" alignItems={"center"} >
         <Header title="Etiologia da queimadura" />
-        
-
         <TouchableCard
           title="Queimadura Térmica"
           subtitle="Camada mais externa"
@@ -82,7 +79,6 @@ export function Etiologia() {
         </BottomSheetScrollView>
       </BottomSheet>
       </VStack>
-    
   );
 }
 
@@ -92,7 +88,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingHorizontal: 16,
     paddingTop: 16,
-    paddingBottom: 150,
+    paddingBottom: 16,
   },
   bottomSheet: {
     backgroundColor: 'white',
