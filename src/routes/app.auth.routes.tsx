@@ -4,8 +4,8 @@ import {
   NativeStackNavigationProp,
 } from "@react-navigation/native-stack";
 
-import { Login } from "../screens/Login";
-import { Cadastro } from "../screens/Cadastro";
+import { Login } from "../screens/auth/Login";
+import { Cadastro } from "../screens/auth/Cadastro";
 
 type AuthRoutes = {
   Login: undefined;

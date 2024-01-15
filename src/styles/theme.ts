@@ -9,6 +9,7 @@ export const THEME = extendTheme({
       700: "#c2410c",
       600: "#ea580c",
       500: "#f97316",
+      400: "#E14300",
     },
     green: {
       700: "#00875F",
@@ -35,6 +36,7 @@ export const THEME = extendTheme({
   fonts: {
     heading: "Roboto_700Bold",
     body: "Roboto_400Regular",
+    logo: "Mirza_700Bold",
   },
   fontSizes: {
     xs: 12,

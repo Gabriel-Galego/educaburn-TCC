@@ -1,23 +1,23 @@
 import { useState } from "react";
 import auth from "@react-native-firebase/auth";
-import { VStack, Heading, Icon, useTheme, Text, ScrollView } from "native-base";
+import { VStack, useTheme, Text, ScrollView } from "native-base";
 
-import { AuthNavigatorRoutesProps } from "../routes/app.auth.routes";
+import { AuthNavigatorRoutesProps } from "../../routes/app.auth.routes";
 
-import Envelope from "phosphor-react-native/src/icons/Envelope";
-import Key from "phosphor-react-native/src/icons/Key";
-
-import { Logo } from "../components/Logo";
-import { Input } from "../components/Input";
-import { Button } from "../components/Button";
+import { Logo } from "../../components/Logo";
+import { Input } from "../../components/Input";
+import { Button } from "../../components/Button";
 import { Alert } from "react-native";
 
 import { useNavigation } from "@react-navigation/native";
+
+
 
 export function Login() {
   const [isLoading, setIsLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
 
   const { colors } = useTheme();
 
@@ -50,7 +50,6 @@ export function Login() {
         );
       })
       .catch((error) => {
-        console.log(error);
 
         if (error.code === "auth/invalid-email") {
           showAlert("Esqueci minha senha", "E-mail inválido.");
@@ -78,7 +77,6 @@ export function Login() {
     auth()
       .signInWithEmailAndPassword(email, password)
       .catch((error) => {
-        console.log(error);
 
         if (
           error.code === "auth/invalid-email" ||
@@ -92,7 +90,9 @@ export function Login() {
         }
       })
       .finally(() => {
+        console.log("Login finalizado");
         setIsLoading(false);
+        
       });
   };
 
@@ -100,31 +100,41 @@ export function Login() {
     <ScrollView
       contentContainerStyle={{ flexGrow: 1 }}
       showsVerticalScrollIndicator={false}
+      keyboardShouldPersistTaps="handled"
+      backgroundColor={"white"}
     >
-      <VStack flex={1} alignItems="center" px={8} pt={24}>
+      <VStack flex={1} bg={"white"} alignItems="center" px={8} pt={24}>
         <Logo />
 
-        <Heading color="gray.100" fontSize="xl" mt={20} mb={6}>
-          Acesse sua conta
-        </Heading>
+        <Text color={"black"} fontSize={30} mb={12} mt={12} fontFamily={"bold"}>
+          Login
+        </Text>
 
-        <Input
-          mb={4}
-          placeholder="E-mail"
-          onChangeText={setEmail}
-          InputLeftElement={
-            <Icon as={<Envelope color={colors.gray[300]} />} ml={4} />
-          }
-        />
+        <Input mb={4} placeholder="E-mail" onChangeText={setEmail} />
 
         <Input
           mb={8}
           placeholder="Senha"
-          secureTextEntry
-          InputLeftElement={
-            <Icon as={<Key color={colors.gray[300]} />} ml={4} />
-          }
+          secureTextEntry={!showPassword}
           onChangeText={setPassword}
+          {...(password.length > 0 && {
+            InputRightElement: (
+              <Text
+                style={{
+                  marginRight: 10,
+                }}
+                onPress={() => {
+                  setShowPassword(true);
+
+                  setTimeout(() => {
+                    setShowPassword(false);
+                  }, 1000);
+                }}
+              >
+                Mostrar
+              </Text>
+            ),
+          })}
         />
 
         <Button
@@ -136,14 +146,14 @@ export function Login() {
 
         <Text
           mt={4}
-          color={"gray.100"}
+          color={"black"}
           fontSize={"sm"}
-          mb={3}
+          mb={12}
           fontFamily={"bold"}
         >
           Esqueceu sua senha?{" "}
           <Text
-            color={"orange.700"}
+            color={"blue.500"}
             fontFamily={"bold"}
             fontSize={"sm"}
             onPress={handleForgotPassword}
@@ -152,15 +162,6 @@ export function Login() {
           </Text>
         </Text>
 
-        <Text
-          color={"gray.100"}
-          fontSize={"sm"}
-          mb={3}
-          fontFamily={"bold"}
-          mt={24}
-        >
-          Ainda não tem Acesso?
-        </Text>
         <Button
           title="Criar conta"
           w="full"

@@ -7,19 +7,16 @@ type Props = IButtonProps & {
 export function Button({ title, variant, ...rest }: Props) {
   return (
     <ButtonNativeBase
-      bg={variant === "outline" ? "transparent" : "orange.700"}
-      borderWidth={variant === "outline" ? 1 : 0}
-      borderColor={"orange.700"}
+      bg={"black"}
+      borderWidth={1}
+      borderColor="#000000"
       h={14}
-      fontSize="sm"
-      rounded="sm"
-      _pressed={{ bg: variant === "outline" ? "gray.500" : "orange.300" }}
+      fontSize={16}
+      rounded={100}
+      _pressed={{ bg: "gray.500" }}
       {...rest}
     >
-      <Heading
-        color={variant === "outline" ? "orange.700" : "white"}
-        fontSize="sm"
-      >
+      <Heading color="white" fontSize={16}>
         {title}
       </Heading>
     </ButtonNativeBase>

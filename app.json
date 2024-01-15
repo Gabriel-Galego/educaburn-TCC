@@ -24,7 +24,10 @@
         "backgroundColor": "#ffffff"
       },
       "googleServicesFile": "./google-services.json",
-      "package": "com.educaburn"
+      "package": "com.educaburn",
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "plugins": [
       "@react-native-firebase/app",
@@ -38,6 +41,11 @@
     ],
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "afc64a3e-7934-45f9-9f15-b610fbc14ab2"
+      }
     }
   }
 }

@@ -1,101 +1,48 @@
-import { HStack, Heading, IconButton, Text, useTheme } from "native-base";
-import { LogoSecondary } from "./LogoSecondary";
-import Backspace from "phosphor-react-native/src/bold/Backspace";
-import { Alert, Image } from "react-native";
+import { HStack, Heading, IconButton, useTheme } from "native-base";
+import Icon from "react-native-vector-icons/FontAwesome5";
+import Icon2 from "react-native-vector-icons/Ionicons";
 
-import auth from "@react-native-firebase/auth";
-import firestore from "@react-native-firebase/firestore";
-import { useEffect, useState } from "react";
 import { useNavigation } from "@react-navigation/native";
-import storage from "@react-native-firebase/storage";
 
-export function Header() {
-  const { colors } = useTheme();
-  const [user, setUser] = useState("");
-  const [profileImage, setProfileImage] = useState<string | null>(null);
+export function Header(props: { title: string; width?: string }) {
+  const { colors }: any = useTheme();
+  const { fonts }: any = useTheme();
   const navigation = useNavigation();
 
-  useEffect(() => {
-    const userEmail = auth().currentUser?.email;
-
-    if (userEmail) {
-      firestore()
-        .collection("Usuarios")
-        .doc(userEmail)
-        .onSnapshot((documentSnapshot) => {
-          setUser(documentSnapshot.data()?.nome);
-        });
-    }
-
-    storage()
-      .ref("profile_images/" + userEmail + "/profile.jpg")
-      .getDownloadURL()
-      .then((url) => {
-        setProfileImage(url);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
   function handleGoBack() {
-    {
-      /*
-    if (navigation.canGoBack()) {
-      navigation.goBack();
-    } else {
-      Alert.alert("Alerta", "Você já está na tela inicial.");
-
-    }
-  */
-    }
-
-    auth()
-      .signOut()
-      .then(() => {
-        console.log("User signed out!");
-      });
+    navigation.goBack();
   }
 
   return (
     <HStack
       w="full"
-      alignItems="center"
-      bg="GRAY_LIGHT"
-      justifyContent="space-between"
-      pt={12}
-      pb={5}
-      px={6}
+      bg="white"
+      pb={10}
+      flexDirection={"row"}
+      alignItems={"center"}
+      justifyContent={"space-between"}
+      px={4}
+      pt={10}
     >
       <IconButton
-        icon={<Backspace size={26} color={colors.black} />}
+        icon={<Icon2 name="chevron-back" size={32} color="#333333" />}
         onPress={handleGoBack}
+        alignSelf="flex-start"
       />
-      <Heading>Olá {user}!</Heading>
-      {profileImage && (
-        <Image
-          source={{ uri: profileImage }}
-          style={{
-            width: 50,
-            height: 50,
-            borderRadius: 100,
-            marginBottom: 10,
-            borderWidth: 1,
-          }}
-        />
-      )}
-      {!profileImage && (
-        <Image
-          source={require("../assets/pngwing.png")}
-          style={{
-            width: 50,
-            height: 50,
-            borderRadius: 100,
-            marginBottom: 10,
-            borderWidth: 1,
-          }}
-        />
-      )}
+      <Heading
+        style={{
+          fontFamily: fonts.heading,
+          fontSize: 24,
+          color: "#333333",
+          textAlign: "left",
+          flexWrap: "wrap",
+          width: "80%",
+          alignSelf: "center",
+          lineHeight: 35,
+        }}
+      >
+        {props.title}
+      </Heading>
     </HStack>
   );
 }
