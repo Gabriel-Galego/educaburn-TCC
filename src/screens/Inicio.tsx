@@ -8,10 +8,9 @@ import Warning from "phosphor-react-native/src/fill/Warning";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import Flame from "phosphor-react-native/src/icons/Flame";
 import React, { useState, useEffect } from "react";
-import { Alert, Image } from "react-native";
+import { Alert } from "react-native";
 import auth from "@react-native-firebase/auth";
 import firestore from "@react-native-firebase/firestore";
-import storage from "@react-native-firebase/storage";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
 
@@ -20,7 +19,6 @@ export function Inicio() {
   const navigation: any = useNavigation();
   const [user, setUser] = useState("");
   const nome = user.split(" ");
-  const [profileImage, setProfileImage] = useState<string | null>(null);
 
   useEffect(() => {
     fetchProfileData(); // Chama a função ao carregar a tela
@@ -42,15 +40,6 @@ export function Inicio() {
         .onSnapshot((documentSnapshot) => {
           setUser(documentSnapshot.data()?.nome);
         });
-    }
-
-    try {
-      const url = await storage()
-        .ref("profile_images/" + userEmail + "/profile.jpg")
-        .getDownloadURL();
-      setProfileImage(url);
-    } catch (error) {
-      setProfileImage(null);
     }
   };
 
@@ -86,31 +75,6 @@ export function Inicio() {
         onPress={handleSignOut}
       />
       <Heading>Olá {nome[0]}!</Heading>
-      {profileImage && (
-        <Image
-          key={profileImage}
-          source={{ uri: profileImage }}
-          onLoad={() => {}}
-          style={{
-            width: 60,
-            height: 60,
-            borderRadius: 100,
-            borderWidth: 1,
-          }}
-        />
-      )}
-      {!profileImage && (
-        <Image
-          source={require("../assets/pngwing.png")}
-          style={{
-            width: 50,
-            height: 50,
-            borderRadius: 100,
-            marginBottom: 10,
-            borderWidth: 1,
-          }}
-        />
-      )}
     </HStack>
         <Flame size={118} color={colors.orange[400]} style={{
           marginTop: 10,

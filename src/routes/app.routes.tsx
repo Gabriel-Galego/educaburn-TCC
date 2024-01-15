@@ -10,7 +10,6 @@ import {
 } from "@react-navigation/native-stack";
 
 import { Contatos } from "../screens/Contatos";
-import { Preferencias } from "../screens/Preferencias";
 import { Informacoes } from "../screens/Informacoes";
 import { Inicio } from "../screens/Inicio";
 import { EstruturaDaPele } from "../screens/stack/EstruturaDaPele";
@@ -34,7 +33,6 @@ import { useTheme } from "native-base";
 export type AppRoutes = {
   Informacoes: undefined;
   Contatos: undefined;
-  Preferencias: undefined;
   Inicio: undefined;
 };
 
@@ -137,13 +135,6 @@ export function AppRoutes() {
         component={Informacoes}
         options={{
           tabBarIcon: ({ color, size }) => <Info color={color} size={size} />,
-        }}
-      />
-      <BottomTab.Screen
-        name="Preferencias"
-        component={Preferencias}
-        options={{
-          tabBarIcon: ({ color, size }) => <Gear color={color} size={size} />,
         }}
       />
     </BottomTab.Navigator>
