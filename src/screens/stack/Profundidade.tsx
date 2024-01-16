@@ -46,7 +46,7 @@ export function Profundidade() {
           }}
         />
         <TouchableCard
-          title="Queimadura de Primeiro Grau"
+          title="Queimadura de Terceiro Grau"
           onPress={() => {
             setText("Ou queimadura de espessura total, ocorre a destruição da epiderme, derme e em alguns casos do tecido subcutâneo adjacente. A pele fica com uma coloração variável, de pálida a avermelhada ou preta, inelástica, ressecada e endurecida ao toque, dependendo do dano aos nervos periféricos pode apresentar diminuição ou perda total da sensibilidade. Nesses casos é necessário realizar enxerto para que ocorra a regeneração da pele, contribuindo para a ocorrência de cicatrizes patológicas.")
             setUrl(false)

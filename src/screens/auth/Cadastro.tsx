@@ -197,7 +197,7 @@ export function Cadastro() {
           <Select.Item label="Não informar" value="O" />
         </Select>
 
-        <Input mb={6} placeholder="Estado" onChangeText={setEstado} />
+        <Input mb={6} placeholder="Estado" onChangeText={setEstado} maxLength={2} />
 
         <Input mb={8} placeholder="Cidade" onChangeText={setCidade} />
 
